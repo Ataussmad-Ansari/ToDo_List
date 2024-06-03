@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">To Do List</string>
+    <string name="today_s">Today\'s \n<b>Schedule</b></string>
+    <string name="processing">Processing</string>
+    <string name="done">Done</string>
+    <string name="channel_name">Task Notification</string>
+    <string name="channel_description">Notification for task reminders</string>
+    <string name="edit_task">Edit Task</string>
+    <string name="add_task">Add Task</string>
+
+</resources>
