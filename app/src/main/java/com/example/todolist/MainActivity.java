@@ -69,12 +69,37 @@ public class MainActivity extends AppCompatActivity {
         todayTask = new SimpleDateFormat("M/d/yyyy", Locale.getDefault());
 
         createDateLayout();
+        //hide drawer
+        binding.view.setVisibility(View.GONE);
+        binding.cancelBtn.setVisibility(View.GONE);
+        binding.imageView.setVisibility(View.GONE);
+        binding.textView2.setVisibility(View.GONE);
+        binding.textView3.setVisibility(View.GONE);
+        binding.allTaskRV.setVisibility(View.GONE);
+
         binding.add.setOnClickListener(v -> {
             showAddTaskDialog();
         });
         //calender
         binding.calender.setOnClickListener(v -> {
             showCalenderDialog();
+        });
+        binding.menu.setOnClickListener(v -> {
+            binding.view.setVisibility(View.VISIBLE);
+            binding.cancelBtn.setVisibility(View.VISIBLE);
+            binding.imageView.setVisibility(View.VISIBLE);
+            binding.textView2.setVisibility(View.VISIBLE);
+            binding.textView3.setVisibility(View.VISIBLE);
+            binding.allTaskRV.setVisibility(View.VISIBLE);
+            allTask();
+        });
+        binding.cancelBtn.setOnClickListener(v -> {
+            binding.view.setVisibility(View.GONE);
+            binding.cancelBtn.setVisibility(View.GONE);
+            binding.imageView.setVisibility(View.GONE);
+            binding.textView2.setVisibility(View.GONE);
+            binding.textView3.setVisibility(View.GONE);
+            binding.allTaskRV.setVisibility(View.GONE);
         });
         //End MainBody...
     }
@@ -113,7 +138,6 @@ public class MainActivity extends AppCompatActivity {
                 }, year, month, dayOfMonth);
         datePickerDialog.show();
     }
-
 
     /*private void showCalenderDialog() {
         // Get the current calendar instance
@@ -451,6 +475,29 @@ public class MainActivity extends AppCompatActivity {
         }
         // Notify the adapter that the data set has changed
         adapter.notifyDataSetChanged();
+    }
+
+    private void allTask() {
+        binding.allTaskRV.setLayoutManager(new LinearLayoutManager(this));
+        AllTaskAdapter allTaskAdapter = new AllTaskAdapter(this, tasks);
+        binding.allTaskRV.setAdapter(allTaskAdapter);
+
+        tasks.clear();
+
+        Cursor cursor = databaseHelper.getInfo();
+        if (cursor != null && cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                int id = cursor.getInt(0);
+                String taskName = cursor.getString(1);
+                String taskTime = cursor.getString(2);
+                String taskDate = cursor.getString(3);
+                TaskModel task = new TaskModel(id, taskName, taskTime, taskDate);
+                tasks.add(task);
+            }
+        } else {
+            Toast.makeText(this, "No tasks found", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
 }

@@ -17,6 +17,13 @@ public class TaskModel {
         this.taskStatus = taskStatus;
     }
 
+    public TaskModel(int id, String taskName, String taskTime, String taskDate) {
+        this.id = id;
+        this.taskName = taskName;
+        this.taskTime = taskTime;
+        this.taskDate = taskDate;
+    }
+
     // Getters and setters
 
 
