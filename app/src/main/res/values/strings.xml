@@ -7,5 +7,8 @@
     <string name="channel_description">Notification for task reminders</string>
     <string name="edit_task">Edit Task</string>
     <string name="add_task">Add Task</string>
+    <string name="task_date">Task Date</string>
+    <string name="task_time">Task Time</string>
+    <string name="task_name">Task Name</string>
 
 </resources>

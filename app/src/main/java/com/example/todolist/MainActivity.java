@@ -188,11 +188,11 @@ public class MainActivity extends AppCompatActivity {
                 dayNameTextView.setTextColor(ContextCompat.getColor(this, R.color.white)); // Highlight current day
                 dateTextView.setTextColor(ContextCompat.getColor(this, R.color.white));
             } else if (calendar.get(Calendar.DAY_OF_MONTH) == today - 1) {
-                dayNameTextView.setTextColor(ContextCompat.getColor(this, R.color.lightGray)); // Highlight previous day
-                dateTextView.setTextColor(ContextCompat.getColor(this, R.color.lightGray));
+                dayNameTextView.setTextColor(ContextCompat.getColor(this, R.color.textColor)); // Highlight previous day
+                dateTextView.setTextColor(ContextCompat.getColor(this, R.color.textColor));
             } else if (calendar.get(Calendar.DAY_OF_MONTH) == today + 1) {
-                dayNameTextView.setTextColor(ContextCompat.getColor(this, R.color.lightGray)); // Highlight next day
-                dateTextView.setTextColor(ContextCompat.getColor(this, R.color.lightGray));
+                dayNameTextView.setTextColor(ContextCompat.getColor(this, R.color.textColor)); // Highlight next day
+                dateTextView.setTextColor(ContextCompat.getColor(this, R.color.textColor));
             }
 
             // Add OnClickListener to each dayLayout to set the full date format and highlight the selected date
@@ -263,8 +263,8 @@ public class MainActivity extends AppCompatActivity {
                 dayNameTextView.setTextColor(ContextCompat.getColor(this, R.color.white)); // Highlight selected date
                 dateTextView.setTextColor(ContextCompat.getColor(this, R.color.white));
             } else {
-                dayNameTextView.setTextColor(ContextCompat.getColor(this, R.color.lightGray)); // Other dates in light gray
-                dateTextView.setTextColor(ContextCompat.getColor(this, R.color.lightGray));
+                dayNameTextView.setTextColor(ContextCompat.getColor(this, R.color.textColor)); // Other dates in light gray
+                dateTextView.setTextColor(ContextCompat.getColor(this, R.color.textColor));
             }
 
             // Add OnClickListener to each dayLayout to set the full date format and highlight the selected date
@@ -351,7 +351,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             // Insert task into database
-            id = databaseHelper.insertTask(taskName, taskTime, taskDate, true);
+            id = databaseHelper.insertTask(taskName, taskTime, taskDate, false);
 
             if (id != -1) {
                 // Update UI

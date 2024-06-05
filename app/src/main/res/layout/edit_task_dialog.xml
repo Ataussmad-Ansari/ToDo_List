@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
@@ -39,11 +40,12 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:background="@drawable/et_bg"
-        android:hint="Task Name"
+        android:hint="@string/task_name"
         android:inputType="text"
         android:padding="10dp"
         android:textColor="@color/white"
-        android:textColorHint="@color/lightGray" />
+        android:textColorHint="@color/lightGray"
+        tools:ignore="Autofill" />
 
     <EditText
         android:id="@+id/taskTime"
@@ -51,10 +53,13 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:background="@drawable/et_bg"
-        android:hint="Task Time"
+        android:hint="@string/task_time"
+        android:focusable="false"
+        android:inputType="none"
         android:padding="10dp"
         android:textColor="@color/white"
-        android:textColorHint="@color/lightGray" />
+        android:textColorHint="@color/lightGray"
+        tools:ignore="Autofill" />
 
     <EditText
         android:id="@+id/taskDate"
@@ -62,10 +67,13 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:background="@drawable/et_bg"
-        android:hint="Task Date"
+        android:hint="@string/task_date"
         android:padding="10dp"
+        android:focusable="false"
+        android:inputType="none"
         android:textColor="@color/white"
-        android:textColorHint="@color/lightGray" />
+        android:textColorHint="@color/lightGray"
+        tools:ignore="Autofill,TextFields" />
 
     <Button
         android:id="@+id/editTaskBtn"

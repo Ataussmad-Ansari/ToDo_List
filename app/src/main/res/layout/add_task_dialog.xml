@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
@@ -39,8 +40,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        android:autofillHints="none"
         android:background="@drawable/et_bg"
-        android:hint="Task Name"
+        android:hint="@string/task_name"
         android:inputType="text"
         android:padding="10dp"
         android:textColor="@color/white"
@@ -52,7 +54,10 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:background="@drawable/et_bg"
-        android:hint="Task Time"
+        android:focusable="false"
+        android:hint="@string/task_time"
+        android:importantForAutofill="no"
+        android:inputType="none"
         android:padding="10dp"
         android:textColor="@color/white"
         android:textColorHint="@color/lightGray" />
@@ -63,10 +68,14 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:background="@drawable/et_bg"
-        android:hint="Task Date"
+        android:hint="@string/task_date"
+        android:focusable="false"
+        android:importantForAutofill="no"
+        android:inputType="none"
         android:padding="10dp"
         android:textColor="@color/white"
-        android:textColorHint="@color/lightGray" />
+        android:textColorHint="@color/lightGray"
+        tools:ignore="TextFields" />
 
     <Button
         android:id="@+id/addTaskBtn"
