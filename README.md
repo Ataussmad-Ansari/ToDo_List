@@ -16,7 +16,10 @@ The ToDo List App helps users manage their tasks effectively. It allows users to
 
 ## Screenshots
 
-(Add some screenshots of your app here)
+![Splash Screen](https://drive.google.com/file/d/1VDIfYMXzjlNl_bFVt5nVha88rbr4rgYJ/view?usp=drivesdk)
+![Home Screen](https://drive.google.com/file/d/1VCjLx07tef63QDWiuC2tiRnQliP23KeS/view?usp=drivesdk)
+![Add Task](https://drive.google.com/file/d/1VCE38IQtiJl8aYNwvj6dX08n9UjLSwvK/view?usp=drivesdk)
+![Task List](https://drive.google.com/file/d/1VCkWFhcrkS5mrChVzBF9pLsEBgKN_epU/view?usp=drivesdk)
 
 ## Download
 
