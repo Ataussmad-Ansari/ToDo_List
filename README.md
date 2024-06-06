@@ -42,6 +42,10 @@ You can download the APK for the To Do List Mobile App from the following link:
 
 ## Screenshots
 Include some screenshots of the app here to give users a preview of the interface and functionality.
+![Splash Screen](https://github.com/Ataussmad-Ansari/ToDo_List/blob/main/screenshot/splash.jpg)
+![Home Screen](https://github.com/Ataussmad-Ansari/ToDo_List/blob/main/screenshot/home.jpg)
+![Add Task](https://github.com/Ataussmad-Ansari/ToDo_List/blob/main/screenshot/addTask.jpg)
+![All List](https://github.com/Ataussmad-Ansari/ToDo_List/blob/main/screenshot/allList.jpg)
 
 ## Contributing
 If you would like to contribute to the development of this app, please fork the repository and submit a pull request with your changes.
