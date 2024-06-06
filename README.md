@@ -47,12 +47,6 @@ Include some screenshots of the app here to give users a preview of the interfac
 ![Add Task](https://github.com/Ataussmad-Ansari/ToDo_List/blob/main/screenshot/addTask.jpg)
 ![All List](https://github.com/Ataussmad-Ansari/ToDo_List/blob/main/screenshot/allList.jpg)
 
-## Contributing
-If you would like to contribute to the development of this app, please fork the repository and submit a pull request with your changes.
-
-## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
-
 ## Contact
 For any questions or feedback, please contact [sam.an.vns6@gmail.com](mailto:sam.an.vns6@gmail.com).
 
