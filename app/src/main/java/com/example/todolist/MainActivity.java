@@ -17,17 +17,26 @@ import android.text.InputType;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.todolist.database.DatabaseHelper;
@@ -55,6 +64,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        EdgeToEdge.enable(this);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
 
         databaseHelper = new DatabaseHelper(this);
 
@@ -69,13 +84,6 @@ public class MainActivity extends AppCompatActivity {
         todayTask = new SimpleDateFormat("M/d/yyyy", Locale.getDefault());
 
         createDateLayout();
-        //hide drawer
-        binding.view.setVisibility(View.GONE);
-        binding.cancelBtn.setVisibility(View.GONE);
-        binding.imageView.setVisibility(View.GONE);
-        binding.textView2.setVisibility(View.GONE);
-        binding.textView3.setVisibility(View.GONE);
-        binding.allTaskRV.setVisibility(View.GONE);
 
         binding.add.setOnClickListener(v -> {
             showAddTaskDialog();
@@ -85,22 +93,19 @@ public class MainActivity extends AppCompatActivity {
             showCalenderDialog();
         });
         binding.menu.setOnClickListener(v -> {
-            binding.view.setVisibility(View.VISIBLE);
-            binding.cancelBtn.setVisibility(View.VISIBLE);
-            binding.imageView.setVisibility(View.VISIBLE);
-            binding.textView2.setVisibility(View.VISIBLE);
-            binding.textView3.setVisibility(View.VISIBLE);
-            binding.allTaskRV.setVisibility(View.VISIBLE);
-            allTask();
+            PopupMenu popupMenu = new PopupMenu(this, binding.menu);
+            MenuInflater inflater = popupMenu.getMenuInflater();
+            inflater.inflate(R.menu.menu_item, popupMenu.getMenu());
+            popupMenu.show();
+            popupMenu.setOnMenuItemClickListener(item -> {
+                if (item.getItemId() == R.id.allTask) {
+                    startActivity(new Intent(this, AllTaskActivity.class));
+                    return true;
+                }
+                return false;
+            });
         });
-        binding.cancelBtn.setOnClickListener(v -> {
-            binding.view.setVisibility(View.GONE);
-            binding.cancelBtn.setVisibility(View.GONE);
-            binding.imageView.setVisibility(View.GONE);
-            binding.textView2.setVisibility(View.GONE);
-            binding.textView3.setVisibility(View.GONE);
-            binding.allTaskRV.setVisibility(View.GONE);
-        });
+
         //End MainBody...
     }
 
@@ -138,31 +143,6 @@ public class MainActivity extends AppCompatActivity {
                 }, year, month, dayOfMonth);
         datePickerDialog.show();
     }
-
-    /*private void showCalenderDialog() {
-        // Get the current calendar instance
-        Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
-        int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
-
-        DatePickerDialog datePickerDialog = new DatePickerDialog(this,
-                (view, selectedYear, selectedMonth, dayOfMonth1) -> {
-                    String selectedDate = (selectedMonth + 1) + "/" + dayOfMonth1 + "/" + selectedYear;
-                    fetchTasksForDate(selectedDate);
-
-                    Calendar selectedDateCalendar = Calendar.getInstance();
-                    selectedDateCalendar.set(selectedYear, selectedMonth, dayOfMonth1);
-
-                    // Format the selected date
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE MMMM dd", Locale.getDefault());
-                    String SelectedDate = dateFormat.format(selectedDateCalendar.getTime());
-                    binding.setTodayDate.setText(SelectedDate);
-
-
-                }, year, month, dayOfMonth);
-        datePickerDialog.show();
-    }*/
 
     private void createDateLayout() {
 
@@ -475,29 +455,6 @@ public class MainActivity extends AppCompatActivity {
         }
         // Notify the adapter that the data set has changed
         adapter.notifyDataSetChanged();
-    }
-
-    private void allTask() {
-        binding.allTaskRV.setLayoutManager(new LinearLayoutManager(this));
-        AllTaskAdapter allTaskAdapter = new AllTaskAdapter(this, tasks);
-        binding.allTaskRV.setAdapter(allTaskAdapter);
-
-        tasks.clear();
-
-        Cursor cursor = databaseHelper.getInfo();
-        if (cursor != null && cursor.getCount() > 0) {
-            while (cursor.moveToNext()) {
-                int id = cursor.getInt(0);
-                String taskName = cursor.getString(1);
-                String taskTime = cursor.getString(2);
-                String taskDate = cursor.getString(3);
-                TaskModel task = new TaskModel(id, taskName, taskTime, taskDate);
-                tasks.add(task);
-            }
-        } else {
-            Toast.makeText(this, "No tasks found", Toast.LENGTH_SHORT).show();
-        }
-
     }
 
 }

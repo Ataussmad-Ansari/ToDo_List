@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#333333"
+    android:id="@+id/main"
+    android:background="@color/dark_100"
     tools:context=".MainActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorPrimary"
         android:gravity="center_vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,7 +21,7 @@
             android:id="@+id/menu"
             android:layout_width="?attr/actionBarSize"
             android:layout_height="?attr/actionBarSize"
-            app:cardBackgroundColor="@color/colorPrimaryDark"
+            app:cardBackgroundColor="@color/dark_200"
             app:cardCornerRadius="12dp"
             app:cardElevation="5dp"
             app:cardUseCompatPadding="true">
@@ -35,16 +35,19 @@
 
         </androidx.cardview.widget.CardView>
 
-        <View
+        <TextView
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textStyle="bold"
+            android:textSize="23dp"
             android:layout_weight="1" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/add"
             android:layout_width="?attr/actionBarSize"
             android:layout_height="?attr/actionBarSize"
-            app:cardBackgroundColor="@color/colorPrimaryDark"
+            app:cardBackgroundColor="@color/dark_200"
             app:cardCornerRadius="12dp"
             app:cardElevation="5dp"
             app:cardUseCompatPadding="true">
@@ -61,7 +64,7 @@
             android:id="@+id/calender"
             android:layout_width="?attr/actionBarSize"
             android:layout_height="?attr/actionBarSize"
-            app:cardBackgroundColor="@color/colorPrimaryDark"
+            app:cardBackgroundColor="@color/dark_200"
             app:cardCornerRadius="12dp"
             app:cardElevation="5dp"
             app:cardPreventCornerOverlap="true"
@@ -81,7 +84,6 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
         android:padding="8dp"
         android:text="@string/today_s"
         android:textColor="@color/white"
@@ -95,19 +97,28 @@
         android:id="@+id/set_today_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:background="@color/dark_200"
         android:padding="8dp"
-        android:textColor="@color/textColor"
+        android:textColor="@color/dark_600"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <LinearLayout
         android:id="@+id/dateLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
         android:orientation="horizontal"
+        android:background="@color/dark_200"
         android:padding="8dp"
         app:layout_constraintTop_toBottomOf="@+id/set_today_date" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:layout_constraintTop_toBottomOf="@+id/dateLayout"
+        android:background="@color/dark_300"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -116,75 +127,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dateLayout"
+        app:layout_constraintTop_toBottomOf="@+id/view"
         tools:listitem="@layout/todo_item" />
-
-    <View
-        android:id="@+id/view"
-        android:layout_width="270dp"
-        android:layout_height="match_parent"
-        android:background="@color/colorPrimaryDark"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/cancelBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:contentDescription="@string/app_name"
-        android:layout_marginEnd="12dp"
-        android:src="@drawable/cancel"
-        app:layout_constraintEnd_toEndOf="@+id/view"
-        app:layout_constraintTop_toTopOf="@+id/view"
-        app:tint="@color/white" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/circle"
-        android:contentDescription="@string/app_name"
-        android:padding="10dp"
-        android:src="@drawable/done"
-        app:layout_constraintEnd_toEndOf="@+id/view"
-        app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toBottomOf="@+id/cancelBtn" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/app_name"
-        android:textColor="@color/white"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/all_tasks"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/view"
-        app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/allTaskRV"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/view"
-        app:layout_constraintEnd_toEndOf="@+id/view"
-        app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

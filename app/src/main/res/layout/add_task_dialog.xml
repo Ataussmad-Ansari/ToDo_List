@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/dark_200"
     android:gravity="center_horizontal"
     android:padding="8dp"
     android:orientation="vertical">
@@ -29,7 +30,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:backgroundTint="@color/btnColor"
             android:contentDescription="@string/add_task"
             android:src="@drawable/cancel" />
     </LinearLayout>
@@ -81,6 +81,6 @@
         android:id="@+id/addTaskBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/btnColor"
+        android:backgroundTint="@android:color/holo_blue_dark"
         android:text="@string/add_task" />
 </LinearLayout>

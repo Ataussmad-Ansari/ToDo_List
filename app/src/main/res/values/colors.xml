@@ -8,4 +8,8 @@
     <color name="textColor1">#D1CFCF</color>
     <color name="btnColor">#1CDBE1</color>
     <color name="lightGray">#B0BEC5</color>
+    <color name="dark_100">#121212</color>
+    <color name="dark_200">#282828</color>
+    <color name="dark_300">#3f3f3f</color>
+    <color name="dark_600">#8b8b8b</color>
 </resources>
